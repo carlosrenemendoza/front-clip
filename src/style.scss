@@ -13,10 +13,12 @@
     margin-right: 28px;
     margin-bottom: 3em;
     background: #fff;
-   padding: 1em;
+  //  padding: 1em;
    border-radius: 1.25rem;
-   height: 40em;
+   height: 43emQ;
    width: 43em;
+   padding: 35px;
+   padding-top: 180px;
 
   }
 
@@ -106,3 +108,172 @@
   z-index: 5;
   position: relative;
 }
+
+.card-item__wrapper{
+  font-family: "Source Code Pro", monospace;
+  padding: 25px 15px;
+  position: relative;
+  z-index: 4;
+  height: 100%;
+  text-shadow: 7px 6px 10px rgb(14 42 90 / 80%);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.card-text_top{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding: 0 10px;
+}
+
+.card-number {
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  font-size: 27px;
+  margin-bottom: 25px;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.card-content {
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.card-chip {
+  width: 60px;
+}
+
+.card-imgmarca{
+  height: 45px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  max-width: 100px;
+  margin-left: auto;
+  width: 100%;
+}
+
+.card-imgmarca2{
+  height: 45px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  max-width: 100px;
+  margin-left: auto;
+  width: 100%;
+  margin-top: 4em;
+    /* margin-left: 1em; */
+    margin-right: 2em;
+}
+
+
+
+.img-marca {
+    max-width: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
+    max-height: 100%;
+    -o-object-position: top right;
+    object-position: top right;
+}
+
+.__input {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid #ced6e0;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font-size: 18px;
+  padding: 5px 15px;
+  background: none;
+  color: #1a3b5d;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+._select {
+  // -webkit-appearance: none;
+  // background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAeCAYAAABuUU38AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAUxJREFUeNrM1sEJwkAQBdCsngXPHsQO9O5FS7AAMVYgdqAd2IGCDWgFnryLFQiCZ8EGnJUNimiyM/tnk4HNEAg/8y6ZmMRVqz9eUJvRaSbvutCZ347bXVJy/ZnvTmdJ862Me+hAbZCTs6GHpyUi1tTSvPnqTpoWZPUa7W7ncT3vK4h4zVejy8QzM3WhVUO8ykI6jOxoGA4ig3BLHcNFSCGqGAkig2yqgpEiMsjSfY9LxYQg7L6r0X6wS29YJiYQYecemY+wHrXD1+bklGhpAhBDeu/JfIVGxaAQ9sb8CI+CQSJ+QmJg0Ii/EE2MBiIXooHRQhRCkBhNhBcEhLkwf05ZCG8ICCOpk0MULmvDSY2M8UawIRExLIQIEgHDRoghihgRIgiigBEjgiFATBACAgFgghEwSAAGgoBCBBgYAg5hYKAIFYgHBo6w9RRgAFfy160QuV8NAAAAAElFTkSuQmCC);
+  background-size: 12px;
+  background-position: 90% center;
+  background-repeat: no-repeat;
+  padding-right: 30px;
+}
+
+.marginBform{
+  margin-bottom: 2em;
+}
+
+.__button {
+  width: 100%;
+  color: #fff;
+  height: 61px;
+  background: #296de2;
+  border: none;
+  border-radius: 15px;
+  font-size: 25px;
+  -webkit-box-shadow: 3px 10px 20px 0px rgb(35 100 210 / 30%);
+  box-shadow: 3px 10px 46px 12px rgb(35 100 210 / 30%);
+  margin-top: 28px;
+  cursor: pointer;
+}
+
+.flip{
+  position: relative;
+  transition: all 1s ease;
+  transform: perspective(600px);
+  transform-origin: 100% 50%;
+  transform-style: preserve-3d;
+  }
+  .flip:hover{
+  transform: perspective(600px) rotateY(-180deg) translateX(100%);
+  }
+
+  .flip .flip-1,
+.flip .flip-2{
+position: absolute;
+backface-visibility: hidden;
+}
+.flip .flip-2{
+transform: rotateY(-180deg);
+}
+
+.band_balck{
+  background: rgba(0, 0, 19, 0.8);
+  width: 100%;
+  height: 50px;
+  margin-top: -14em;
+  position: relative;
+  z-index: 2;
+  
+}
+
+
