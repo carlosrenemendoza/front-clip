@@ -1,136 +1,170 @@
-import React, { Component } from "react";
-import { Row, Card, CardBody, Button } from "reactstrap";
-import cardImg from "../assets/fondo1.jpeg";
-import chip from "../assets/traschip.png";
-import macarandom from "../assets/visa.png";
+import React, { Component } from 'react';
+import { Row, Card, CardBody } from 'reactstrap';
+import axios from 'axios';
+import { message } from 'antd';
+import cardImg from '../assets/fondo1.jpeg';
+import chip from '../assets/traschip.png';
+import VISA from '../assets/visa.png';
+import UNIONPAY from '../assets/unionpay.png';
+import MASTERCARD from '../assets/mastercard.png';
+import DISCOVER from '../assets/discover.png';
+import JCB from '../assets/jcb.png';
+import AMERICAN_EXPRESS from '../assets/AMERICAN _EXPRESS.png';
+import DINERS_CLUB from '../assets/DINERS_CLUB.png';
+import ELO from '../assets/ELO.png';
+import HIPERCARD from '../assets/HIPERCARD.png';
+import HIPER from '../assets/HIPER.png';
+import MAESTRO from '../assets/MAESTROS.png';
+import MIR from '../assets/MIR.png';
+import VALIDATION from '../validation';
+const creditCardType = require('credit-card-type');
+const ValidationService = new VALIDATION();
+const styles = { marginTop: '8vh' };
+const key = 'Clip';
 
-/*=============================================
-=            Dashboard Component              =
-=============================================*/
-
-let catForm = {
-  EXPIRECTIODATE: [
-    { value: 1, label: "1" },
-    { value: 2, label: "2" },
-    { value: 3, label: "3" },
-    { value: 4, label: "4" },
-    { value: 5, label: "5" },
-    { value: 6, label: "6" },
-    { value: 7, label: "7" },
-    { value: 8, label: "8" },
-    { value: 9, label: "9" },
-    { value: 10, label: "10" },
-    { value: 11, label: "11" },
-    { value: 12, label: "12" },
-  ],
-  YEARCARD: [
-    { value: 2021, label: "2021" },
-    { value: 2022, label: "2022" },
-    { value: 2023, label: "2023" },
-    { value: 2024, label: "2024" },
-    { value: 2025, label: "2025" },
-    { value: 2026, label: "2026" },
-    { value: 2027, label: "2027" },
-    { value: 2028, label: "2028" },
-    { value: 2029, label: "2029" },
-    { value: 2030, label: "2030" },
-    { value: 2031, label: "2031" },
-    { value: 2032, label: "2032" },
-  ],
+const imgMar = {
+  Visa: VISA,
+  UnionPay: UNIONPAY,
+  Mastercard: MASTERCARD,
+  'American Express': AMERICAN_EXPRESS,
+  'Diners Club': DINERS_CLUB,
+  Discover: DISCOVER,
+  Elo: ELO,
+  Hipercard: HIPERCARD,
+  Hiper: HIPER,
+  JCB: JCB,
+  Maestro: MAESTRO,
+  Mir: MIR,
 };
 
-let formCardCred = [
-  {
-    id: "cardNumber",
-    required: true,
-    name: "cardNumber",
-    className: "card-input col-md-12 marginBform",
-    labelText: "Card Number",
-    classNameLabel: "card-input__label",
-    datatype: "Input",
-    type: "tel",
-    inputClass: "__input",
-    value: "",
-    maxlength: "14",
-  },
-  {
-    id: "cardName",
-    required: true,
-    name: "cardName",
-    className: "card-input col-md-12 marginBform",
-    labelText: "Card Name",
-    classNameLabel: "card-input__label",
-    type: "",
-    datatype: "Input",
-    inputClass: "__input",
-    value: "",
-    maxlength: "34",
-  },
-  {
-    id: "expirateMonth",
-    required: true,
-    name: "expirateMonth",
-    className: "card-input col-md-4 marginBform",
-    labelText: "Expiration Date",
-    classNameLabel: "card-input__label",
-    type: "",
-    datatype: "Select",
-    inputClass: "__input _select",
-    value: "",
-    options: "EXPIRECTIODATE",
-  },
-  {
-    id: "yeardCard",
-    required: true,
-    name: "yeardCard",
-    className: "card-input col-md-4 marginBform",
-    labelText: "",
-    classNameLabel: "card-input__label",
-    type: "",
-    datatype: "Select",
-    inputClass: "__input _select",
-    value: "",
-    options: "YEARCARD",
-  },
-  {
-    id: "cvv",
-    required: true,
-    name: "cvv",
-    className: "card-input col-md-4 marginBform",
-    labelText: "CVV",
-    classNameLabel: "card-input__label",
-    datatype: "Input",
-    type: "tel",
-    inputClass: "__input",
-    value: "",
-    maxlength: "4",
-  },
-];
+const catForm = {
+  EXPIRECTIODATE: [
+    { value: 1, label: '01' },
+    { value: 2, label: '02' },
+    { value: 3, label: '03' },
+    { value: 4, label: '04' },
+    { value: 5, label: '05' },
+    { value: 6, label: '06' },
+    { value: 7, label: '07' },
+    { value: 8, label: '08' },
+    { value: 9, label: '09' },
+    { value: 10, label: '10' },
+    { value: 11, label: '11' },
+    { value: 12, label: '12' },
+  ],
+  YEARCARD: [
+    { value: 2021, label: '2021' },
+    { value: 2022, label: '2022' },
+    { value: 2023, label: '2023' },
+    { value: 2024, label: '2024' },
+    { value: 2025, label: '2025' },
+    { value: 2026, label: '2026' },
+    { value: 2027, label: '2027' },
+    { value: 2028, label: '2028' },
+    { value: 2029, label: '2029' },
+    { value: 2030, label: '2030' },
+    { value: 2031, label: '2031' },
+    { value: 2032, label: '2032' },
+  ],
+};
 class creditCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: "",
+      formCardCred: [
+        {
+          id: 'cardNumber',
+          required: true,
+          name: 'cardNumber',
+          className: 'card-input col-md-12 marginBform',
+          labelText: 'Card Number',
+          classNameLabel: 'card-input__label',
+          datatype: 'Input',
+          type: 'number',
+          inputClass: '__input',
+          value: '',
+          maxlength: '16',
+          regExp: /^[0-9]{0,16}$/,
+          style: {},
+        },
+        {
+          id: 'cardName',
+          required: true,
+          name: 'cardName',
+          className: 'card-input col-md-12 marginBform',
+          labelText: 'Card Name',
+          classNameLabel: 'card-input__label',
+          type: '',
+          datatype: 'Input',
+          inputClass: '__input',
+          value: '',
+          maxlength: '34',
+          regExp: /^[a-zA-Z ]*$/,
+          style: {},
+        },
+        {
+          id: 'expirateMonth',
+          required: true,
+          name: 'expirateMonth',
+          className: 'card-input col-md-4 marginBform',
+          labelText: 'Expiration Date',
+          classNameLabel: 'card-input__label',
+          type: 'number',
+          datatype: 'Select',
+          inputClass: '__input _select',
+          value: '',
+          options: 'EXPIRECTIODATE',
+          style: {},
+        },
+        {
+          id: 'yeardCard',
+          required: true,
+          name: 'yeardCard',
+          className: 'card-input col-md-4 marginBform',
+          labelText: '',
+          classNameLabel: 'card-input__label',
+          type: '',
+          datatype: 'Select',
+          inputClass: '__input _select',
+          value: '',
+          options: 'YEARCARD',
+          style: {},
+        },
+        {
+          id: 'cvv',
+          required: true,
+          name: 'cvv',
+          className: 'card-input col-md-4 marginBform',
+          labelText: 'CVV',
+          classNameLabel: 'card-input__label',
+          datatype: 'Input',
+          type: 'number',
+          inputClass: '__input',
+          value: '',
+          maxlength: '4',
+          regExp: /^[0-9]{0,4}$/,
+          style: {},
+        },
+      ],
+      search: '',
       Inputs: [],
+      creditCard: [],
       infocard: {
         cardNumber: '',
         cardName: '',
         cvv: '',
-        expirateMonth:'',
-        yeardCard:''
-        // expiration 
-      }
+        expirateMonth: '1',
+        yeardCard: '2021',
+        // expiration
+      },
     };
   }
 
-  /*=============================================
-  =            Get Info Dashboard Function      =
-  =============================================*/
   getInfoDashBoard = async () => {
     try {
       this.buildForm();
     } catch (error) {
-      console.log("error", error);
+      console.warn('error', error);
     }
   };
 
@@ -138,188 +172,245 @@ class creditCard extends Component {
     this.getInfoDashBoard();
   }
 
-  separatorNumber = (valor) => {
-    var str = valor;
-    var len = 4;
-    var regex = new RegExp(".{" + len + "}", "g");
-    var trail = str.length - (str.length % len);
+  separatorNumber = (inputNum) => {
+    var newval = '';
+    let val = inputNum.replace(/\s/g, '');
 
-    var parts = str.match(regex);
-    parts.push(str.substring(trail));
-
-    let newString = parts.join("   ");
-
-    let newString2 = newString.substr(0, newString.length - 1);
-
-    console.log(newString2);
-    return newString2;
+    for (var i = 0; i < val.length; i++) {
+      if (i % 4 === 0 && i > 0) newval = newval.concat(' ');
+      newval = newval.concat(val[i]);
+    }
+    return newval;
   };
 
-  // buildRows = (name, item, flat2) => {
-  //   let rows = config[name].map((e) => {
-  //     return (
-  //       <div
-  //         style={{ paddingTop: "1px", marginBottom: "10px" }}
-  //         className={
-  //           e.id === "personajeepisode"
-  //             ? "col-md-12"
-  //             : flat2
-  //             ? "col-md-12"
-  //             : "col-md-6"
-  //         }
-  //       >
-  //         <div className="row">
-  //           <div className={"col-md-6"}>
-  //             <span
-  //               style={{
-  //                 color: "rgb(84 83 80 / 75%)",
-  //                 fontWeight: "bold",
-  //                 fontSize: "12px",
-  //               }}
-  //             >
-  //               {e.label}
-  //             </span>
-  //           </div>
-  //           <div style={{ color: "#e36a6a" }} className="col-md-12 ">
-  //             {e.id === "image" ? (
-  //               <img
-  //                 src={item[e.id]}
-  //                 style={{ borderRadius: "3em" }}
-  //                 className={flat2 ? "imgAvanzada" : "imgPers"}
-  //                 alt="logo"
-  //               />
-  //             ) : e.id === "personajelocation" ? (
-  //               <span>{item.location.name ? item.location.name : ""}</span>
-  //             ) : e.id === "personajeepisode" ? (
-  //               this.getEpisodio(item.episodiolink)
-  //             ) : e.id === "ubicacionresidents" ? (
-  //               <span>{item.residents ? item.residents.length : ""}</span>
-  //             ) : e.id === "created" ? (
-  //               <span>
-  //                 {item[e.id] ? moment(item[e.id]).format("YYYY-MM-DD") : ""}
-  //               </span>
-  //             ) : (
-  //               <span>{item[e.id] ? item[e.id] : ""}</span>
-  //             )}
-  //           </div>
-  //         </div>
-  //       </div>
-  //     );
-  //   });
-  //   return rows;
-  // };
+  changeInput = (id, exp) => (event) => {
+    let { infocard, formCardCred } = this.state;
+    formCardCred.forEach((e) => {
+      e.style = { color: '#000001' };
+      e.error = '';
+    });
+    let visaCards = '';
+    if (exp) {
+      const emailRegex = new RegExp(exp);
+      if (emailRegex.test(event.target.value)) {
+        infocard[id] = event.target.value;
+        visaCards = creditCardType(event.target.value);
+        this.setState({ infocard, creditCard: visaCards }, () => {
+          this.buildForm();
+        });
+      }
+    } else {
+      infocard[id] = event.target.value;
+      visaCards = creditCardType(event.target.value);
+      this.setState({ infocard, creditCard: visaCards }, () => {
+        this.buildForm();
+      });
+    }
+  };
 
-  changeInput = (id) => event => {
-    console.log("id",id);
-    console.log("event.target.value",event.target.value);
-    let {infocard} = this.state
-    infocard[id] = event.target.value
+  changeSelect = (id) => (event) => {
+    let { infocard } = this.state;
+    infocard[id] = event.target.value;
     this.setState({ infocard }, () => {
-        this.buildForm()
-    })
-  }
-
-
+      this.buildForm();
+    });
+  };
 
   buildForm = () => {
-    let  { infocard} = this.state;
-    console.log("entre a la funcion de logs");
-    let Inputs = formCardCred.map((e, i) => {
-      console.log("entre al for---->>>", e);
-
-      if (e.datatype === "Input")
+    let { infocard, formCardCred } = this.state;
+    let Inputs = formCardCred.map((e) => {
+      if (e.datatype === 'Input')
         return (
           <div class={e.className}>
-            <label for={e.name} class={e.classNameLabel}>
+            <label style={e.style} for={e.name} class={e.classNameLabel}>
               {e.labelText}
             </label>
             <input
               type={e.type}
               id={e.id}
-              onChange={this.changeInput(e.id)}
-              // input="changeNumber"
-              // focus="focusCardNumber"
-              // blur="blurCardNumber"
+              onChange={this.changeInput(e.id, e.regExp)}
               class={e.inputClass}
               value={infocard[e.id]}
               maxlength={e.maxlength}
               data-card-field
-              autocomplete="off"
+              autocomplete='off'
             />
           </div>
         );
-      else if (e.datatype === "Select")
+      else if (e.datatype === 'Select')
         return (
           <div class={e.className}>
             <label
-              style={{ marginBottom: e.labelText === "" ? "4em" : "" }}
+              style={{ marginBottom: e.labelText === '' ? '4em' : '' }}
               for={e.name}
               class={e.classNameLabel}
             >
               {e.labelText}
             </label>
-            <select class={e.inputClass} id={e.id} value={infocard[e.id]} change="" data-card-field>
-              {catForm[e.options].map((e, i) => {
+            <select
+              style={e.style}
+              class={e.inputClass}
+              id={e.id}
+              value={infocard[e.id]}
+              change=''
+              onChange={this.changeSelect(e.id)}
+              data-card-field
+            >
+              {catForm[e.options].map((e) => {
                 return <option value={e.value}>{e.label}</option>;
               })}
             </select>
           </div>
         );
+
+      return 0;
     });
     this.setState({
       Inputs,
     });
   };
 
-  render() {
-    const { Inputs } = this.state;
+  submitData = async () => {
+    let { infocard } = this.state;
+    let newArray = {
+      cardNumber: infocard.cardNumber,
+      cardName: infocard.cardName,
+      cvv: infocard.cvv,
+      expiration: `${this.minTwoDigits(infocard.expirateMonth)}-${
+        infocard.yeardCard
+      }`,
+    };
+    try {
+      await axios.post('http://localhost:4219/back/createContact', {
+        newArray,
+      });
+      message.success({
+        content: 'Credit card information saved',
+        key,
+        style: styles,
+        duration: 2,
+      });
+    } catch (error) {
+      message.error('Internal server Error');
+    }
+  };
 
-    console.log("Inputs", Inputs);
+  minTwoDigits = (n) => {
+    return (n < 10 ? '0' : '') + n;
+  };
+
+  validateCardCred = async () => {
+    let { infocard, formCardCred } = this.state;
+
+    let BODY = {
+      headerDetails: infocard,
+    };
+    ValidationService.validate({
+      target: 'CREDIT-CARD',
+      data: BODY,
+    })
+      .then(() => {
+        formCardCred.forEach((e) => {
+          e.style = { color: '#000001' };
+          e.error = '';
+        });
+        this.setState(
+          {
+            formCardCred,
+          },
+          () => {
+            this.buildForm();
+            this.submitData();
+          }
+        );
+      })
+      .catch((errors) => {
+        console.warn('ERROR', errors);
+        let Element = document.getElementById(Object.keys(errors)[0]);
+        if (Element) {
+          Element.scrollIntoView({ block: 'end', behavior: 'smooth' });
+          Element.focus();
+        }
+        formCardCred.forEach((e) => {
+          if (errors[e.id]) {
+            e.style = { color: '#e57373' };
+            e.error = errors[e.id].label;
+          } else {
+            e.error = '';
+            e.style = { color: '#000001' };
+          }
+        });
+        this.setState({ formCardCred }, () => {
+          this.buildForm();
+          message.error({
+            content: 'There are some errors',
+            className: 'classCustomMessa',
+          });
+        });
+      });
+  };
+
+  render() {
+    const { Inputs, infocard, creditCard } = this.state;
     return (
       <>
-        <section className="App-content">
-          <div className="col-md-12">
-            <div className="cardimgone">
-              <div className="divtreecard flip">
-                <div className="divsecond  flip-1">
-                  <div className="divprime  ">
-                    <img src={cardImg} className="card-img " alt="cardImg" />
+        <section className='App-content'>
+          <div className='col-md-12'>
+            <div className='cardimgone'>
+              <div className='divtreecard flip'>
+                <div className='divsecond  flip-1'>
+                  <div className='divprime  '>
+                    <img src={cardImg} className='card-img ' alt='cardImg' />
                   </div>
-                  <div className="card-item__wrapper">
-                    <div className="card-text_top">
-                      <img src={chip} className="card-chip" alt="card-chip" />
-                      <div className="card-imgmarca">
+                  <div className='card-item__wrapper'>
+                    <div className='card-text_top'>
+                      <img src={chip} className='card-chip' alt='card-chip' />
+                      <div className='card-imgmarca'>
                         <img
-                          src={macarandom}
-                          className="img-marca"
-                          alt="card-chip"
+                          src={
+                            imgMar[
+                              creditCard.length > 0
+                                ? creditCard[0].niceType !== ''
+                                  ? creditCard[0].niceType
+                                  : 'JCB'
+                                : 'JCB'
+                            ]
+                          }
+                          className='img-marca'
+                          alt='card-chip'
                         />
                       </div>
                     </div>
-                    <label className="card-number">
-                      {this.separatorNumber("5433543354335433")}
+                    <label className='card-number'>
+                      {this.separatorNumber(
+                        infocard.cardNumber === ''
+                          ? '****************'
+                          : infocard.cardNumber
+                      )}
                     </label>
-                    {/* <div className="card-content col-12"> */}
-                    <Row className="card-content col-md-12">
-                      <div className="card-content col-md-7">
+                    {/* <div className='card-content col-12'> */}
+                    <Row className='card-content col-md-12'>
+                      <div className='card-content col-md-7'>
                         <Row>
-                          <label class="col-md-12">Card Holder</label>
-                          <label style={{ fontSize: "18px" }} class="col-md-12">
-                            FULL NAME
+                          <label class='col-md-12'>Card Holder</label>
+                          <label style={{ fontSize: '15px' }} class='col-md-12'>
+                            {infocard.cardName ? infocard.cardName : ''}
                           </label>
                         </Row>
                       </div>
-                      <div className="card-content col-md-5">
+                      <div className='card-content col-md-5'>
                         <Row>
-                          <label class="col-md-12">Expires</label>
-                          <label style={{ fontSize: "18px" }} class="col-md-1">
-                            MM
+                          <label class='col-md-12'>Expires</label>
+                          <label style={{ fontSize: '18px' }} class='col-md-1'>
+                            {infocard.expirateMonth
+                              ? this.minTwoDigits(infocard.expirateMonth)
+                              : 'MM'}
                           </label>
-                          <label style={{ fontSize: "18px" }} class="col-md-1">
+                          <label style={{ fontSize: '18px' }} class='col-md-1'>
                             /
                           </label>
-                          <label style={{ fontSize: "18px" }} class="col-md-1">
-                            YY
+                          <label style={{ fontSize: '18px' }} class='col-md-1'>
+                            {infocard.yeardCard ? infocard.yeardCard : 'YY'}
                           </label>
                         </Row>
                       </div>
@@ -327,67 +418,74 @@ class creditCard extends Component {
                     {/* </div> */}
                   </div>
                 </div>
-                <div className="divsecond flip-2">
-                  <div className="divprime">
-                    <img src={cardImg} className="card-img " alt="cardImg" />
+                <div className='divsecond flip-2'>
+                  <div className='divprime'>
+                    <img src={cardImg} className='card-img ' alt='cardImg' />
                   </div>
-                  <div className="card-item__wrapper">
-                    {/* <div className="card-content col-12"> */}
-                    <Row className="card-content col-md-12">
-                      <div className="card-content col-md-12">
-                        <div class="card-input">
-                          <label for="cardCvv" class="card-input__label">
-                            {"cvv"}
+                  <div className='card-item__wrapper'>
+                    {/* <div className='card-content col-12'> */}
+                    <Row className='card-content col-md-12'>
+                      <div className='card-content col-md-12'>
+                        <div class='card-input'>
+                          <label for='cardCvv' class='card-input__label'>
+                            {'cvv'}
                           </label>
                           <input
-                            type="tel"
-                            class="card-input__input"
-                            v-number-only
-                            id="fields.cardCvv"
-                            maxlength="4"
-                            value="formData.cardCvv"
-                            input="changeCvv"
+                            disabled='true'
+                            type='tel'
+                            class='card-input__input'
+                            id='fields.cardCvv'
+                            maxlength='4'
+                            value={infocard.cvv ? infocard.cvv : ''}
+                            input='changeCvv'
                             data-card-field
-                            autocomplete="off"
+                            autocomplete='off'
                           />
                         </div>
                       </div>
-                      <div className="card-content col-md-12">
-                        <div class="card-form__col -cvv">
+                      <div className='card-content col-md-12'>
+                        <div class='card-form__col -cvv'>
                           <div
-                            style={{ width: "10em" }}
-                            class="card-input"
+                            style={{ width: '10em' }}
+                            class='card-input'
                           ></div>
                         </div>
                       </div>
                     </Row>
-                    {/* </div> */}
                   </div>
-                  <div className="band_balck"></div>
-                  <div className="card-imgmarca2">
+                  <div className='band_balck'></div>
+                  <div className='card-imgmarca2'>
                     <img
-                      src={macarandom}
-                      className="img-marca"
-                      alt="card-chip"
+                      src={
+                        imgMar[
+                          creditCard.length > 0
+                            ? creditCard[0].niceType !== ''
+                              ? creditCard[0].niceType
+                              : 'JCB'
+                            : 'JCB'
+                        ]
+                      }
+                      className='img-marca'
+                      alt='card-chip'
                     />
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-md-3"></div>
-            <div className="col-md-6">
-              <Card className="myCard">
+            <div className='col-md-3'></div>
+            <div className='col-md-6'>
+              <Card className='myCard'>
                 <CardBody>
                   {Inputs}
-                  <button class="__button" onClick="">
-                    {"Submit"}
+                  <button class='__button' onClick={this.validateCardCred}>
+                    {'Submit'}
                   </button>
                 </CardBody>
               </Card>
             </div>
-            <div className="col-md-3"></div>
-          </div>{" "}
-        </section>{" "}
+            <div className='col-md-3'></div>
+          </div>{' '}
+        </section>{' '}
       </>
     );
   }

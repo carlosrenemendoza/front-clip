@@ -1,26 +1,35 @@
 {
   "files": {
-    "main.css": "/static/css/main.9e897bbf.chunk.css",
-    "main.js": "/static/js/main.5fc6ef59.chunk.js",
-    "main.js.map": "/static/js/main.5fc6ef59.chunk.js.map",
+    "main.css": "/static/css/main.9f907c34.chunk.css",
+    "main.js": "/static/js/main.a7d4c576.chunk.js",
+    "main.js.map": "/static/js/main.a7d4c576.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.e43478dd.js",
     "runtime-main.js.map": "/static/js/runtime-main.e43478dd.js.map",
-    "static/css/2.c944652c.chunk.css": "/static/css/2.c944652c.chunk.css",
-    "static/js/2.0426734b.chunk.js": "/static/js/2.0426734b.chunk.js",
-    "static/js/2.0426734b.chunk.js.map": "/static/js/2.0426734b.chunk.js.map",
+    "static/css/2.ee4c32c4.chunk.css": "/static/css/2.ee4c32c4.chunk.css",
+    "static/js/2.5f805503.chunk.js": "/static/js/2.5f805503.chunk.js",
+    "static/js/2.5f805503.chunk.js.map": "/static/js/2.5f805503.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/2.c944652c.chunk.css.map": "/static/css/2.c944652c.chunk.css.map",
-    "static/css/main.9e897bbf.chunk.css.map": "/static/css/main.9e897bbf.chunk.css.map",
-    "static/js/2.0426734b.chunk.js.LICENSE.txt": "/static/js/2.0426734b.chunk.js.LICENSE.txt",
+    "static/css/2.ee4c32c4.chunk.css.map": "/static/css/2.ee4c32c4.chunk.css.map",
+    "static/css/main.9f907c34.chunk.css.map": "/static/css/main.9f907c34.chunk.css.map",
+    "static/js/2.5f805503.chunk.js.LICENSE.txt": "/static/js/2.5f805503.chunk.js.LICENSE.txt",
+    "static/media/AMERICAN _EXPRESS.c577ba0c.png": "/static/media/AMERICAN _EXPRESS.c577ba0c.png",
+    "static/media/DINERS_CLUB.dee495f6.png": "/static/media/DINERS_CLUB.dee495f6.png",
+    "static/media/ELO.3d205664.png": "/static/media/ELO.3d205664.png",
+    "static/media/HIPERCARD.146cd25d.png": "/static/media/HIPERCARD.146cd25d.png",
+    "static/media/MIR.ff2b9619.png": "/static/media/MIR.ff2b9619.png",
     "static/media/semantic.min.css": "/static/media/outline-icons.ddae9b1b.woff",
-    "static/media/cardImg.f66f83c2.jpeg": "/static/media/cardImg.f66f83c2.jpeg",
-    "static/media/logo.d7dec378.png": "/static/media/logo.d7dec378.png"
+    "static/media/discover.3dde2fd5.png": "/static/media/discover.3dde2fd5.png",
+    "static/media/jcb.23c6093d.png": "/static/media/jcb.23c6093d.png",
+    "static/media/logo.d7dec378.png": "/static/media/logo.d7dec378.png",
+    "static/media/mastercard.fdd172ae.png": "/static/media/mastercard.fdd172ae.png",
+    "static/media/traschip.17d0e962.png": "/static/media/traschip.17d0e962.png",
+    "static/media/unionpay.5c3adaa8.png": "/static/media/unionpay.5c3adaa8.png"
   },
   "entrypoints": [
     "static/js/runtime-main.e43478dd.js",
-    "static/css/2.c944652c.chunk.css",
-    "static/js/2.0426734b.chunk.js",
-    "static/css/main.9e897bbf.chunk.css",
-    "static/js/main.5fc6ef59.chunk.js"
+    "static/css/2.ee4c32c4.chunk.css",
+    "static/js/2.5f805503.chunk.js",
+    "static/css/main.9f907c34.chunk.css",
+    "static/js/main.a7d4c576.chunk.js"
   ]
 }

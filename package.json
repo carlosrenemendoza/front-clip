@@ -8,9 +8,10 @@
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "antd": "^4.16.8",
+    "antd": "^4.16.10",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
+    "credit-card-type": "^9.1.0",
     "express": "^4.17.1",
     "moment": "^2.29.1",
     "react": "^17.0.2",
@@ -46,7 +47,11 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-react": "^7.24.0",
     "nodemon": "^2.0.12",
+    "prettier": "^2.3.2",
     "webpack-cli": "^4.7.2"
   }
 }

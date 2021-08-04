@@ -1,63 +1,67 @@
-.myCard{
-    cursor: pointer!important;
-    transition: 0.3s !important;
-    &:hover{
-      box-shadow: 0 0px 18px 0 rgba(0,0,0,0.4)  !important;
+.myCard {
+  cursor: pointer !important;
+  transition: 0.3s !important;
+
+  &:hover {
+    box-shadow: 0 0px 18px 0 rgba(0, 0, 0, 0.4) !important;
     border-radius: 1.25rem;
-    }
-    &._cardSelected{
-      border: solid .1em #0277BD;
-    }
-    box-shadow: 0 0px 10px 0 rgba(0,0,0,0.4)  !important;
-    font-weight: bold;
-    margin-right: 28px;
-    margin-bottom: 3em;
-    background: #fff;
+  }
+
+  &._cardSelected {
+    border: solid .1em #0277BD;
+  }
+
+  box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4) !important;
+  font-weight: bold;
+  margin-right: 28px;
+  margin-bottom: 3em;
+  background: #fff;
   //  padding: 1em;
-   border-radius: 1.25rem;
-   height: 43emQ;
-   width: 43em;
-   padding: 35px;
-   padding-top: 180px;
+  border-radius: 1.25rem;
+  height: 43emQ;
+  width: 43em;
+  padding: 35px;
+  padding-top: 180px;
 
+}
+
+.myCardOptions {
+  cursor: pointer !important;
+  transition: 0.3s !important;
+
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
 
-  .myCardOptions{
-    cursor: pointer!important;
-    transition: 0.3s !important;
-    &:hover{
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    }
-    &._cardSelected{
-      border: solid .1em #0277BD;
-    }
-    font-weight: bold;
-    margin-right: 28px;
-    margin-bottom: 3em;
+  &._cardSelected {
+    border: solid .1em #0277BD;
   }
 
-.containerCenter{
+  font-weight: bold;
+  margin-right: 28px;
+  margin-bottom: 3em;
+}
+
+.containerCenter {
   left: 25em;
 }
 
-.card-img{
+.card-img {
   max-width: 100%;
-    display: block;
-    max-height: 100%;
-    height: 100%;
-    width: 100%;
-    -o-object-fit: cover;
-    object-fit: cover;
+  display: block;
+  max-height: 100%;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
-.divprime{
+.divprime {
   height: 100%;
   position: absolute;
   height: 100%;
   background-color: #1c1d27;
-  background-image: linear-gradient(
-147deg
-, #354fce 0%, #0c296b 74%);
+  background-image: linear-gradient(147deg, #354fce 0%, #0c296b 74%);
   left: 0;
   top: 0;
   width: 100%;
@@ -70,20 +74,8 @@
   overflow: hidden;
   -webkit-box-shadow: 0 20px 60px 0 rgb(14 42 90 / 55%);
   box-shadow: 0 20px 60px 0 rgb(14 42 90 / 55%);
-  -webkit-transform: perspective(2000px) rotateY(
-0deg
-) rotateX(
-0deg
-) rotate(
-0deg
-);
-  transform: perspective(2000px) rotateY(
-0deg
-) rotateX(
-0deg
-) rotate(
-0deg
-);
+  -webkit-transform: perspective(2000px) rotateY(0deg) rotateX(0deg) rotate(0deg);
+  transform: perspective(2000px) rotateY(0deg) rotateX(0deg) rotate(0deg);
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-transition: all 0.8s cubic-bezier(0.71, 0.03, 0.56, 0.85);
@@ -109,7 +101,7 @@
   position: relative;
 }
 
-.card-item__wrapper{
+.card-item__wrapper {
   font-family: "Source Code Pro", monospace;
   padding: 25px 15px;
   position: relative;
@@ -122,7 +114,7 @@
   user-select: none;
 }
 
-.card-text_top{
+.card-text_top {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -161,7 +153,7 @@
   width: 60px;
 }
 
-.card-imgmarca{
+.card-imgmarca {
   height: 45px;
   position: relative;
   display: -webkit-box;
@@ -175,7 +167,7 @@
   width: 100%;
 }
 
-.card-imgmarca2{
+.card-imgmarca2 {
   height: 45px;
   position: relative;
   display: -webkit-box;
@@ -188,19 +180,19 @@
   margin-left: auto;
   width: 100%;
   margin-top: 4em;
-    /* margin-left: 1em; */
-    margin-right: 2em;
+  /* margin-left: 1em; */
+  margin-right: 2em;
 }
 
 
 
 .img-marca {
-    max-width: 100%;
-    -o-object-fit: contain;
-    object-fit: contain;
-    max-height: 100%;
-    -o-object-position: top right;
-    object-position: top right;
+  max-width: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+  max-height: 100%;
+  -o-object-position: top right;
+  object-position: top right;
 }
 
 .__input {
@@ -228,7 +220,7 @@
   padding-right: 30px;
 }
 
-.marginBform{
+.marginBform {
   margin-bottom: 2em;
 }
 
@@ -246,34 +238,34 @@
   cursor: pointer;
 }
 
-.flip{
+.flip {
   position: relative;
   transition: all 1s ease;
   transform: perspective(600px);
   transform-origin: 100% 50%;
   transform-style: preserve-3d;
-  }
-  .flip:hover{
+}
+
+.flip:hover {
   transform: perspective(600px) rotateY(-180deg) translateX(100%);
-  }
-
-  .flip .flip-1,
-.flip .flip-2{
-position: absolute;
-backface-visibility: hidden;
-}
-.flip .flip-2{
-transform: rotateY(-180deg);
 }
 
-.band_balck{
+.flip .flip-1,
+.flip .flip-2 {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.flip .flip-2 {
+  transform: rotateY(-180deg);
+}
+
+.band_balck {
   background: rgba(0, 0, 19, 0.8);
   width: 100%;
   height: 50px;
   margin-top: -14em;
   position: relative;
   z-index: 2;
-  
+
 }
-
-
